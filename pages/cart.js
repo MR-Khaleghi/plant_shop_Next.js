@@ -3,6 +3,7 @@ import { useCart } from '@/hooks/user';
 import { fetchJson } from '@/lib/api';
 import React from 'react';
 import { useQuery } from 'react-query';
+import { server } from '.';
 
 function formatCart(cartItems) {
   let total = 0.0;
@@ -55,9 +56,9 @@ function CartTable({ cartItems }) {
 
 function Cart() {
   //   const cartItems = useCart();
-  const query = useQuery('cart', () => fetchJson('/api/cart'));
+  const query = useQuery('cart', () => fetchJson(`${server}/api/cart`));
   const cartItems = query.data;
-  console.log(cartItems);
+  // console.log(cartItems);
   return (
     <Page title="Cart">{cartItems && <CartTable cartItems={cartItems} />}</Page>
   );

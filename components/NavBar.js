@@ -8,7 +8,7 @@ function NavBar() {
   const user = useUser();
   const signOut = useSignOut();
 
-  console.log(user);
+  // console.log(user);
   return (
     <nav className="px-2 py-1">
       <ul className="flex gap-2">

@@ -1,4 +1,5 @@
 import { fetchJson } from '@/lib/api';
+import { server } from '@/pages';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 
 const USER_QUERY_KEY = 'user';
@@ -8,7 +9,7 @@ export function useCart() {
     'cart',
     async () => {
       try {
-        return await fetchJson('/api/cart');
+        return await fetchJson(`${server}/api/cart`);
       } catch (error) {
         return undefined;
       }
@@ -24,7 +25,7 @@ export function useCart() {
 export default function useSignOut() {
   const queryClient = useQueryClient();
   const mutation = useMutation(async () => {
-    await fetchJson('/api/logout');
+    await fetchJson(`${server}/api/logout`);
   });
   return async () => {
     try {
@@ -37,7 +38,7 @@ export default function useSignOut() {
 export function useSignIn() {
   const queryClient = useQueryClient();
   const mutation = useMutation(async ({ email, password }) => {
-    return await fetchJson('/api/login', {
+    return await fetchJson(`${server}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -63,7 +64,7 @@ export function useUser() {
     USER_QUERY_KEY,
     async () => {
       try {
-        return await fetchJson('/api/user');
+        return await fetchJson(`${server}/api/user`);
       } catch (error) {
         return undefined;
       }

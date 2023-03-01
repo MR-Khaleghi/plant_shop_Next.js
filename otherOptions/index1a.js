@@ -10,7 +10,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({ products }) {
-  console.log(products);
+  // console.log(products);
   return (
     <>
       <Head>

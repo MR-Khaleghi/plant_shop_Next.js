@@ -1,4 +1,5 @@
 import { fetchJson } from '@/lib/api';
+import { server } from '@/pages';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useMutation } from 'react-query';
@@ -9,7 +10,7 @@ function AddToCart({ productId }) {
   const [quantity, setQuantity] = useState(1);
   const mutation = useMutation(
     async () =>
-      await fetchJson('/api/cart', {
+      await fetchJson(`${server}/api/cart`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productId, quantity }),

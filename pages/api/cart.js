@@ -28,7 +28,7 @@ async function cartGetHandler(req, res) {
     const cart = await fetchJson(`${CMS_URL}/cart-items`, {
       headers: { Authorization: `Bearer ${jwt}` },
     });
-    console.log(cart);
+    // console.log(cart);
     res.status(200).json(cart.map(stripCart));
   } catch (error) {
     res.status(401).send('unauthorized_2');
@@ -51,7 +51,7 @@ async function cartPostHandler(req, res) {
       },
       body: JSON.stringify({ product: productId, quantity }),
     });
-    console.log(cart);
+    // console.log(cart);
     res.status(200).json({});
   } catch (error) {
     res.status(401).send('unauthorized_2');
