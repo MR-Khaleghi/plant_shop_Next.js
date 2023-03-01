@@ -1,4 +1,6 @@
+import AddToCart from '@/components/AddToCart';
 import Page from '@/components/Page';
+import { useUser } from '@/hooks/user';
 import { ApiError } from '@/lib/api';
 import { getProduct, getProducts } from '@/lib/products';
 import Head from 'next/head';
@@ -31,6 +33,7 @@ export async function getStaticProps({ params: { id } }) {
 }
 
 export default function ProductPage({ product }) {
+  const user = useUser();
   return (
     <>
       <Page title={product.title}>
@@ -39,6 +42,7 @@ export default function ProductPage({ product }) {
           <div className="lg:ml-4">
             <p className="text-sm">{product.description}</p>
             <p className="text-lg font-bold mt-2">{product.price}</p>
+            {user && <AddToCart productId={product.id} />}
           </div>
         </div>
       </Page>

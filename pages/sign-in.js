@@ -2,27 +2,21 @@ import Button from '@/components/Button';
 import Field from '@/components/Field';
 import InputForm from '@/components/input';
 import Page from '@/components/Page';
-import { fetchJson } from '@/lib/api';
-import React, { useState } from 'react';
+import { useSignIn } from '@/hooks/user';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 function SingInPage() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [status, setStatus] = useState({ loading: false, errorFlag: false });
+  const { signIn, signInError, signInLoading } = useSignIn();
 
   const handlesubmit = async (event) => {
     event.preventDefault();
-    setStatus({ loading: true, errorFlag: false });
-    try {
-      const response = await fetchJson('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      setStatus({ loading: false, errorFlag: false });
-      console.log(response);
-    } catch (error) {
-      setStatus({ loading: false, errorFlag: true });
+    const valid = await signIn(email, password);
+    if (valid) {
+      router.push('/');
     }
   };
 
@@ -45,10 +39,8 @@ function SingInPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Field>
-        {status.errorFlag && (
-          <p className="text-red-700">Invalid Credentials</p>
-        )}
-        {status.loading ? (
+        {signInError && <p className="text-red-700">Invalid Credentials</p>}
+        {signInLoading ? (
           <p>Loading...</p>
         ) : (
           <Button type="submit">Sign In</Button>

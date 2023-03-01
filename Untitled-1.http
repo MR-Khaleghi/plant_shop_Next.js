@@ -8,3 +8,20 @@ Content-Type: application/json
 
 ###
 GET http://localhost:1337/products
+
+###
+GET https://strapi-cms-gtl8.onrender.com/products
+
+###
+GET http://localhost:1337/cart-items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc3NDk4NTkxLCJleHAiOjE2ODAwOTA1OTF9.vYFpSHcag9UN49AyHPjuZhh5gj4gG73K7YV9EBxHGqY
+ 
+###
+ POST http://localhost:1337/cart-items
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc3NDk4NTkxLCJleHAiOjE2ODAwOTA1OTF9.vYFpSHcag9UN49AyHPjuZhh5gj4gG73K7YV9EBxHGqY
+Content-Type: application/json
+
+{
+    "product": 2,
+    "quantity": 3
+}
