@@ -1,8 +1,9 @@
 import { fetchJson } from '@/lib/api';
 
-const CMS_URL = process.env.CMS_URL;
+// const CMS_URL = process.env.CMS_URL;
 
 import React from 'react';
+import { CMS_URL } from '..';
 
 function stripCart(cartItem) {
   return {
