@@ -34,11 +34,21 @@ export async function getStaticProps({ params: { id } }) {
 
 export default function ProductPage({ product }) {
   const user = useUser();
+  const myLoader = ({ src }) => {
+    return `${product.imageUrl}`;
+  };
   return (
     <>
       <Page title={product.title}>
         <div className=" flex flex-col lg:flex-row">
-          <Image src={product.imageUrl} width={600} height={400} alt="" />
+          <Image
+            unoptimized
+            loader={myLoader}
+            src={product.imageUrl}
+            width={600}
+            height={400}
+            alt=""
+          />
           <div className="lg:ml-4">
             <p className="text-sm">{product.description}</p>
             <p className="text-lg font-bold mt-2">{product.price}</p>

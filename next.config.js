@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ['https://strapi-cms-gtl8.onrender.com'],
   },
 };
 

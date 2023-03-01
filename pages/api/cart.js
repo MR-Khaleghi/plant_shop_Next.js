@@ -1,7 +1,7 @@
 import { fetchJson } from '@/lib/api';
+import { CMS_SERVER } from '..';
 
-const CMS_URL = process.env.CMS_URL;
-
+const CMS_URL = CMS_SERVER;
 function stripCart(cartItem) {
   return {
     id: cartItem.id,
