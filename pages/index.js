@@ -3,8 +3,6 @@
 import Page from '@/components/Page';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/products';
-import Head from 'next/head';
-import Link from 'next/link';
 
 const dev = process.env.NODE_ENV !== 'production';
 
