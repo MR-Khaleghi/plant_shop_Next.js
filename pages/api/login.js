@@ -1,7 +1,6 @@
 import { fetchJson } from '@/lib/api';
 import cookie from 'cookie';
-import { CMS_URL } from '..';
-// const CMS_URL = process.env.CMS_URL;
+const CMS_URL = process.env.CMS_URL;
 
 async function LoginHandler(req, res) {
   if (req.method !== 'POST') {
